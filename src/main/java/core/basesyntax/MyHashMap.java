@@ -72,10 +72,8 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
             newNode.next = bucket;
             buckets[index] = newNode;
             size++;
-            return;
         } else if (Objects.equals(bucket.key, newNode.key)) {
             bucket.value = newNode.value;
-            return;
         } else {
             while (bucket.next != null) {
                 if (Objects.equals(bucket.key, newNode.key)) {
