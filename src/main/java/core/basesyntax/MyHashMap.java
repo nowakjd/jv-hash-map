@@ -63,7 +63,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     }
 
     private int getIndex(K key) {
-        return (key == null) ? 0 : (key.hashCode() & Integer.MAX_VALUE) % 16;
+        return (key == null) ? 0 : (key.hashCode() & Integer.MAX_VALUE) % capacity;
     }
 
     private void insertNode(Node<K, V> newNode, int index) {
@@ -85,8 +85,8 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
                 bucket = bucket.next;
             }
             bucket.next = newNode;
+            size++;
         }
-        size++;
     }
 
     private static class Node<K, V> {
